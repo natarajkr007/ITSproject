@@ -1,0 +1,43 @@
+/*body {
+    background: white url("images/background.png");
+}
+
+ul.errorlist {
+    padding-left: 0;
+}
+
+ul.errorlist > li {
+    list-style: none;
+}*/
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand {
+  font-family: 'Kumar One', cursive;
+  background-color: #ffdc44;
+}
+
+.navbar-inverse {
+    background-color: #e46238;
+    border-color: #e46238;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #0b0a0a;
+}
+
+a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: #D53F34;
+}
+
+/*.glyphicon-star {
+    color: #CCCCCC;
+    font-size: 16px;
+}
+
+.glyphicon-star.active {
+    color: #FDB230;
+}*/
