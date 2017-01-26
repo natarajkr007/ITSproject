@@ -24,22 +24,29 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'EMS:index' %}">EMS</a>
+            <a class="navbar-brand" href="/EMS">EMS</a>
         </div>
 
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="{% block home_active %}{% endblock %}"><a href="{% url 'EMS:index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
+                <li class="{% block home_active %}{% endblock %}"><a href="/EMS"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
                 <li>
-                    <a href="#">
+                    <a href="#">{{ user.first_name }}</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'EMS:login' %}">
                         <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; LogIn
+
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </div>
 
