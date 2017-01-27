@@ -71,6 +71,7 @@ def register(request):
             'EMS/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
+            
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
