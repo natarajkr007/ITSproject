@@ -3,6 +3,48 @@
 
 {% block body %}
 <div class="container-fluid">
-<h3>Wel-come to EMS</h3>
+  <!-- <h3>Wel-come to EMS</h3> -->
+  <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="text-primary"><span class="glyphicon glyphicon-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <form class="form" role="form" action="{% url "EMS:login" %}" method="POST" accept-charset="UTF-8" id="login-nav">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label class="sr-only" for="username">Unique Service Number : </label>
+                  <input name="username" type="text" class="form-control" id="username" placeholder="Service No." autofocus required>
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="password">Password</label>
+                  <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                  <div class="help-block text-right"><a href="#">Forgot the password ?</a></div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                </div>
+                <!-- <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> keep me logged-in
+                  </label>
+                </div> -->
+              </form>
+            </div>
+            <div class="bottom text-center">
+              New here ? <a href="{% url "EMS:register" %}"><b>Join Us</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
