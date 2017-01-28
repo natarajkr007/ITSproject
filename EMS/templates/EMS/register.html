@@ -1,53 +1,101 @@
 {% extends 'EMS/base.html' %}
 {% block title %}Registration{% endblock %}
+{% load staticfiles %}
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'EMS/login.css' %}"/>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+{% endblock %}
+
+
 {% block body %}
-    <body>
-        <h1>Register in EMS</h1>
 
-        {% if registered %}
-        you have already registered
-        <a href="/EMS/login">Login page</a><br />
-        {% else %}
-        <strong>Register here!</strong><br />
+<div class="container-fluid">
 
-        <form id="user_form" method="post" action="/EMS/register/"
-                enctype="multipart/form-data">
+  {% if registered %}
+  <h4 style="font-family: 'Montserrat', sans-serif; font-size:40px">You Have Already Registered</h4>
+  <a href="{% url "EMS:login" %}">Login page</a><br />
 
-            {% csrf_token %}
-
-            <!-- Display each form. The as_p method wraps each element in a paragraph
-                 (<p>) element. This ensures each element appears on a new line,
-                 making everything look neater. -->
-                 <!-- {{ user_form.as_p }}
-                 {{ profile_form.as_p }} -->
-                 {% for field in user_form %}
-                 <div class="form-group">
-                   <div class="col-sm-offset-2 col-sm-10">
-                     <span class="text-danger small">{{ field.errors }}</span>
-                   </div>
-                   <label class="control-label col-sm-2" for="song_title">{{ field.label_tag }}</label>
-                   <div class="col-sm-10">{{ field }}</div>
-                 </div>
-                 {% endfor %}
-                 {% for field in profile_form %}
-                 <div class="form-group">
-                   <div class="col-sm-offset-2 col-sm-10">
-                     <span class="text-danger small">{{ field.errors }}</span>
-                   </div>
-                   <label class="control-label col-sm-2" for="song_title">{{ field.label_tag }}</label>
-                   <div class="col-sm-10">{{ field }}</div>
-                 </div>
-                 {% endfor %}
-
-
-            <!-- Provide a button to click to submit the form. -->
-            <!-- <input type="submit" name="submit" value="Register" /> -->
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Submit</button>
+  {% else %}
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-5">
+        <div class="form-login" style="background-color: #62ce60;">
+          <h4 style="font-family: 'Montserrat', sans-serif; font-size:40px">Register Yourself</h4>
+          <p class="text-center text-uppercase text-info">save power . save money . save earth</p>
+          <div class="col-md-12">
+            <form class="form" role="form" action="{% url "EMS:register" %}" method="post" accept-charset="UTF-8">
+              {% csrf_token %}
+              <span class="help-block"><span class="asteriskField">*</span>all fields are compulsory</span>
+              <div class="col-sm-12"><strong>Name :</strong></span></div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <span class="text-danger small">{{ user_form.first_name.errors }}</span>
+                </div>
+                <label class="sr-only" for="first_name">First Name</label>
+                <input name="first_name" type="text" class="form-control" id="first_name" placeholder="First Name" autofocus required>
               </div>
+              <div class="col-sm-12"><strong>Service No. :</strong></span></div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <span class="text-danger small">{{ user_form.username.errors }}</span>
+                </div>
+                <label class="sr-only" for="username">Username</label>
+                <input name="username" type="text" class="form-control" id="username" placeholder="Service No." required>
+              </div>
+              <div class="col-sm-12"><strong>Email :</strong></div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <span class="text-danger small">{{ user_form.email.errors }}</span>
+                </div>
+                <label class="sr-only" for="email">Email</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="Email address" required>
+              </div>
+              <div class="col-sm-12"><strong>Password :</strong></div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <span class="text-danger small">{{ user_form.password.errors }}</span>
+                </div>
+                <label class="sr-only" for="password">Password</label>
+                <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+              </div>
+              <div class="col-sm-12"><strong>Door No. :</strong></div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <span class="text-danger small">{{ profile_form.address.errors }}</span>
+                </div>
+                <label class="sr-only" for="address">Address</label>
+                <input name="address" type="text" class="form-control" id="address" placeholder="Door No." required>
+              </div>
+              <div class="col-sm-12"><strong>Phone No. :</strong></div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <span class="text-danger small">{{ profile_form.phone_no.errors }}</span>
+                </div>
+                <label class="sr-only" for="phone_no">Phone</label>
+                <input name="phone_no" type="text" class="form-control" id="phone_no" placeholder="Phone No." required>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+              </div>
+
+              <!--{% for field in profile_form %}
+              <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+              <span class="text-danger small">{{ field.errors }}</span>
             </div>
+            <label class="control-label col-sm-2" for="song_title">{{ field.label_tag }}</label>
+            <div class="col-sm-10">{{ field }}</div>
+          </div>
+          {% endfor %}-->
+
         </form>
-        {% endif %}
-    </body>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% endif %}
+
 {% endblock %}

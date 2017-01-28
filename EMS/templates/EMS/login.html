@@ -1,27 +1,19 @@
 {% extends 'EMS/base.html' %}
 {% block title %}EMS-Login{% endblock %}
 {% load staticfiles %}
-{% block stylesheet %}<link rel="stylesheet" type="text/css" href="{% static 'EMS/login.css' %}"/>{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'EMS/login.css' %}"/>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
-<!-- <body>
-<h1>Login to EMS</h1>
 
-<form id="login_form" method="post" action="/EMS/login/">
-{% csrf_token %}
-Unique serviceno: <input type="text" name="username" value="" size="50" />
-<br />
-Password: <input type="password" name="password" value="" size="50" />
-<br />
-
-<input type="submit" value="submit" />
-</form>
-
-</body> -->
 <div class="container">
   <div class="row">
     <div class="col-md-offset-4 col-md-5">
       <div class="form-login">
-        <h4>Welcome back.</h4>
+        <h4 style="font-family: 'Montserrat', sans-serif; font-size:40px">Welcome back.</h4>
+        <p class="text-center text-uppercase text-info">Please LogIn</p>
         <div class="col-md-12">
           <form class="form" role="form" action="" method="POST" accept-charset="UTF-8" id="login-nav">
             {% csrf_token %}
@@ -38,19 +30,19 @@ Password: <input type="password" name="password" value="" size="50" />
               <button type="submit" class="btn btn-primary btn-block">Sign in</button>
             </div>
             <!-- <div class="checkbox">
-              <label>
-                <input type="checkbox"> keep me logged-in
-              </label>
-            </div> -->
-          </form>
-        </div>
-        <div class="bottom text-center">
-          New here ? <a href="{% url "EMS:register" %}"><b>Join Us</b></a>
-        </div>
-      </div>
+            <label>
+            <input type="checkbox"> keep me logged-in
+          </label>
+        </div> -->
+      </form>
     </div>
-
+    <div class="bottom text-center">
+      New here ? <a href="{% url "EMS:register" %}"><b>Join Us</b></a>
+    </div>
   </div>
 </div>
+
 </div>
+</div>
+
 {% endblock %}

@@ -9,8 +9,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-    Address = models.CharField(max_length=250)
-    phone_no=models.CharField(max_length=10)
+    address = models.CharField(max_length=10, null=False, blank=False)
+    phone_no=models.CharField(max_length=10, null=False, blank=False)
 
     # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):

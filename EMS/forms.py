@@ -8,13 +8,13 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name','username', 'email', 'password')
-        labels = {
-            'username': 'Unique service no',
-        }
+        # labels = {
+        #     'username': 'Unique service no',
+        # }
 
 class UserProfileForm(forms.ModelForm):
     # phone_no = forms.CharField(widget=forms.)         need to complete it
 
     class Meta:
         model = UserProfile
-        fields = ('Address', 'phone_no')
+        fields = ('address', 'phone_no')
