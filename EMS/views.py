@@ -71,7 +71,7 @@ def register(request):
 
 def user_login(request):
     # Like before, obtain the context for the user's request.
-    context = RequestContext(request)
+    # context = RequestContext(request)
 
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -96,7 +96,7 @@ def user_login(request):
                 return HttpResponseRedirect('/EMS/')
             else:
                 # An inactive account was used - no logging in!
-                return HttpResponse("Your Rango account is disabled.")
+                return HttpResponse("Your account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
@@ -107,7 +107,8 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('EMS/login.html', {}, context)
+        # return render_to_response('EMS/login.html', {}, context)
+        return render(request, 'EMS/login.html')
 
 
 @login_required

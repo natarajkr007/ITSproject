@@ -15,7 +15,7 @@
         <h4 style="font-family: 'Montserrat', sans-serif; font-size:40px">Welcome back.</h4>
         <p class="text-center text-uppercase text-info">Please LogIn</p>
         <div class="col-md-12">
-          <form class="form" role="form" action="" method="POST" accept-charset="UTF-8" id="login-nav">
+          <form class="form" role="form" action="{% url "EMS:login" %}" method="POST" accept-charset="UTF-8" id="login-nav">
             {% csrf_token %}
             <div class="form-group">
               <label class="sr-only" for="username">Unique Service Number : </label>
