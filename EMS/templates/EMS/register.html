@@ -18,11 +18,35 @@
             <!-- Display each form. The as_p method wraps each element in a paragraph
                  (<p>) element. This ensures each element appears on a new line,
                  making everything look neater. -->
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
+                 <!-- {{ user_form.as_p }}
+                 {{ profile_form.as_p }} -->
+                 {% for field in user_form %}
+                 <div class="form-group">
+                   <div class="col-sm-offset-2 col-sm-10">
+                     <span class="text-danger small">{{ field.errors }}</span>
+                   </div>
+                   <label class="control-label col-sm-2" for="song_title">{{ field.label_tag }}</label>
+                   <div class="col-sm-10">{{ field }}</div>
+                 </div>
+                 {% endfor %}
+                 {% for field in profile_form %}
+                 <div class="form-group">
+                   <div class="col-sm-offset-2 col-sm-10">
+                     <span class="text-danger small">{{ field.errors }}</span>
+                   </div>
+                   <label class="control-label col-sm-2" for="song_title">{{ field.label_tag }}</label>
+                   <div class="col-sm-10">{{ field }}</div>
+                 </div>
+                 {% endfor %}
+
 
             <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Register" />
+            <!-- <input type="submit" name="submit" value="Register" /> -->
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
         </form>
         {% endif %}
     </body>

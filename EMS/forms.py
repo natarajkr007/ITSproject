@@ -3,7 +3,7 @@ from .models import UserProfile
 from django import forms
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -13,6 +13,8 @@ class UserForm(forms.ModelForm):
         }
 
 class UserProfileForm(forms.ModelForm):
+    # phone_no = forms.CharField(widget=forms.)         need to complete it
+
     class Meta:
         model = UserProfile
         fields = ('Address', 'phone_no')

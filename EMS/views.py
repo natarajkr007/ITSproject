@@ -14,7 +14,7 @@ def index(request):
 
 def register(request):
     # Like before, get the request's context.
-    context = RequestContext(request)
+    # context = RequestContext(request)
 
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
@@ -67,11 +67,8 @@ def register(request):
         profile_form = UserProfileForm()
 
     # Render the template depending on the context.
-    return render_to_response(
-            'EMS/register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
-            context)
-            
+    return render(request, 'EMS/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
