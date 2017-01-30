@@ -1,3 +1,9 @@
 .navbar-nav>li>.dropdown-menu {
     background-color: #e46238;
 }
+
+body{
+  background-image: url("../background.jpg");
+  background-size: 1366px 768px;
+  background-repeat: no-repeat;
+}

@@ -2,7 +2,7 @@
 {% block title %}Registration{% endblock %}
 {% load staticfiles %}
 {% block stylesheet %}
-<link rel="stylesheet" type="text/css" href="{% static 'EMS/login.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'EMS/register.css' %}"/>
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 {% endblock %}
 
@@ -41,6 +41,7 @@
                 </div>
                 <label class="sr-only" for="username">Username</label>
                 <input name="username" type="text" class="form-control" id="username" placeholder="Service No." required>
+                <span class="help-block">Your unique service no.</span>
               </div>
               <div class="col-sm-12"><strong>Email :</strong></div>
               <div class="form-group">
@@ -49,6 +50,7 @@
                 </div>
                 <label class="sr-only" for="email">Email</label>
                 <input name="email" type="email" class="form-control" id="email" placeholder="Email address" required>
+                <span class="help-block">Give us a valid one</span>
               </div>
               <div class="col-sm-12"><strong>Password :</strong></div>
               <div class="form-group">
@@ -57,6 +59,7 @@
                 </div>
                 <label class="sr-only" for="password">Password</label>
                 <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                <span class="help-block">Don't chech with others</span>
               </div>
               <div class="col-sm-12"><strong>Door No. :</strong></div>
               <div class="form-group">
@@ -65,6 +68,7 @@
                 </div>
                 <label class="sr-only" for="address">Address</label>
                 <input name="address" type="text" class="form-control" id="address" placeholder="Door No." required>
+                <span class="help-block">Enter your Door no. only</span>
               </div>
               <div class="col-sm-12"><strong>Phone No. :</strong></div>
               <div class="form-group">
