@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}EMS{% endblock %}</title>
-    {% load staticfiles %}
-    <link rel="shortcut icon" type="image/png" href="{%  static 'thunder.ico' %}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Kumar+One" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'EMS/style.css' %}"/>
+  <meta charset="UTF-8">
+  <title>{% block title %}EMS{% endblock %}</title>
+  {% load staticfiles %}
+  <link rel="shortcut icon" type="image/png" href="{%  static 'thunder.ico' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'EMS/base.css' %}"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Kumar+One" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'EMS/style.css' %}"/>
 
-    {% block stylesheet %}{% endblock %}
+  {% block stylesheet %}{% endblock %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <!-- <script src="{% static 'Transport/js/main.js' %}"></script> -->
+  <!-- <script src="{% static 'Transport/js/main.js' %}"></script> -->
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
 
-        <!-- Header -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/EMS">EMS</a>
-        </div>
+      <!-- Header -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url "EMS:index" %}">EMS</a>
+      </div>
 
-        <!-- Items -->
-        <div class="collapse navbar-collapse" id="topNavBar">
-            <ul class="nav navbar-nav">
-                <li class="{% block home_active %}{% endblock %}"><a href="/EMS"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
+      <!-- Items -->
+      <div class="collapse navbar-collapse" id="topNavBar">
+        <ul class="nav navbar-nav">
+          <li class="{% block home_active %}{% endblock %}"><a href="{% url "EMS:index" %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
+        </ul>
 
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.first_name }} <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{% url "EMS:logout" %}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
             </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                <li>
-                    <a href="#">{{ user.first_name }}</a>
-                </li>
-                {% else %}
-                <li>
-                <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
-                  <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; LogIn
-                </button> -->
-                <a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; LogIn</a>
-              </li>
-                {% endif %}
-            </ul>
-        </div>
-
+          </li>
+          {% else %}
+          <li>
+            <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; LogIn
+          </button> -->
+          <a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; LogIn</a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
+
+  </div>
 </nav>
 {% block body %}
 {% endblock %}
