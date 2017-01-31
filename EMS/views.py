@@ -15,6 +15,8 @@ def index(request):
 def register(request):
     # Like before, get the request's context.
     # context = RequestContext(request)
+    if request.user.is_authenticated:
+        return redirect('EMS:index')
 
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
@@ -72,6 +74,8 @@ def register(request):
 def user_login(request):
     # Like before, obtain the context for the user's request.
     # context = RequestContext(request)
+    if request.user.is_authenticated:
+        return redirect('EMS:index')
 
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -94,6 +98,7 @@ def user_login(request):
                 # We'll send the user back to the homepage.
                 login(request, user)
                 # return HttpResponseRedirect('/EMS/')
+                request.session['user'] = user.username
                 return redirect('EMS:index')
             else:
                 # An inactive account was used - no logging in!
@@ -119,3 +124,7 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return redirect('EMS:index')
+
+@login_required
+def user_profile(request):
+    return render(request, 'EMS/user_profile.html')
