@@ -3,6 +3,7 @@ body {
   background-color: lightblue;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
+  background-image: url("../register_background.jpg");
 }
 
 .container {
@@ -35,8 +36,4 @@ h4 {
 
 .wrapper {
     text-align: center;
-}
-
-.well {
-  background-image: url("../register_background.jpg");
 }
