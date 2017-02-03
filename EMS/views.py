@@ -5,11 +5,16 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
+from .models import UserProfile
 
 # Use the login_required() decorator to ensure only those logged in can access the view.
 
 def index(request):
-    return render(request, 'EMS/index.html')
+    user_count = UserProfile.objects.count()
+    context = {
+        'user_count' : user_count,
+    }
+    return render(request, 'EMS/index.html', context)
 
 
 def register(request):
