@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 body {
-  background-color:#fff;
+  background-color: lightblue;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
 }
@@ -35,4 +35,8 @@ h4 {
 
 .wrapper {
     text-align: center;
+}
+
+.well {
+  background-image: url("../register_background.jpg");
 }

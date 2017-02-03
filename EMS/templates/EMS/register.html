@@ -16,7 +16,7 @@
   <a href="{% url "EMS:login" %}">Login page</a><br />
 
   {% else %}
-  <div class="jumbotron">
+  <div class="well">
     <div class="row">
       <div class="col-md-offset-4 col-md-5">
         <div class="form-login" style="background-color: #62ce60;">
@@ -26,7 +26,7 @@
             <form class="form" role="form" action="{% url "EMS:register" %}" method="post" accept-charset="UTF-8">
               {% csrf_token %}
               <span class="help-block"><span class="asteriskField">*</span>all fields are compulsory</span>
-              <div class="col-sm-12"><strong>Name :</strong></span></div>
+              <div class="col-sm-12 text-primary"><strong>Name :</strong></span></div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <span class="text-danger small">{{ user_form.first_name.errors }}</span>
@@ -34,7 +34,7 @@
                 <label class="sr-only" for="first_name">First Name</label>
                 <input name="first_name" type="text" class="form-control" id="first_name" placeholder="First Name" autofocus required>
               </div>
-              <div class="col-sm-12"><strong>Service No. :</strong></span></div>
+              <div class="col-sm-12 text-primary"><strong>Service No. :</strong></span></div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <span class="text-danger small">{{ user_form.username.errors }}</span>
@@ -43,7 +43,7 @@
                 <input name="username" type="text" class="form-control" id="username" placeholder="Service No." required>
                 <span class="help-block">Your unique service no.</span>
               </div>
-              <div class="col-sm-12"><strong>Email :</strong></div>
+              <div class="col-sm-12 text-primary"><strong>Email :</strong></div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <span class="text-danger small">{{ user_form.email.errors }}</span>
@@ -52,7 +52,7 @@
                 <input name="email" type="email" class="form-control" id="email" placeholder="Email address" required>
                 <span class="help-block">Give us a valid one</span>
               </div>
-              <div class="col-sm-12"><strong>Password :</strong></div>
+              <div class="col-sm-12 text-primary"><strong>Password :</strong></div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <span class="text-danger small">{{ user_form.password.errors }}</span>
@@ -61,7 +61,7 @@
                 <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
                 <span class="help-block">Don't chech with others</span>
               </div>
-              <div class="col-sm-12"><strong>Door No. :</strong></div>
+              <div class="col-sm-12 text-primary"><strong>Door No. :</strong></div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <span class="text-danger small">{{ profile_form.address.errors }}</span>
@@ -70,7 +70,7 @@
                 <input name="address" type="text" class="form-control" id="address" placeholder="Door No." required>
                 <span class="help-block">Enter your Door no. only</span>
               </div>
-              <div class="col-sm-12"><strong>Phone No. :</strong></div>
+              <div class="col-sm-12 text-primary"><strong>Phone No. :</strong></div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <span class="text-danger small">{{ profile_form.phone_no.errors }}</span>
@@ -79,7 +79,7 @@
                 <input name="phone_no" type="text" class="form-control" id="phone_no" placeholder="Phone No." required>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <button type="submit" class="btn btn-group-lg btn-primary btn-block">Register</button>
               </div>
 
               <!--{% for field in profile_form %}
@@ -101,5 +101,11 @@
 </div>
 
 {% endif %}
+
+<script type="text/javascript">
+    document.getElementById("loginButton").onclick = function () {
+        location.href = "{% url "EMS:login" %}";
+    };
+</script>
 
 {% endblock %}
