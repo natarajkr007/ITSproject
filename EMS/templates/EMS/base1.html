@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}EMS{% endblock %}</title>
+
+  {% load staticfiles %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'thunder.ico' %}"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="{% static 'EMS/base1.css' %}">
+
+  {% block stylesheet %}{% endblock %}
+
+</head>
+<body>
+
+  <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="transition-nav">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{% url "EMS:index" %}" id="transition-nav-brand"><i class="fa fa-bolt fa-lg" id="navbrand-icon" aria-hidden="true"></i> EMS</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav nav-pills mr-auto">
+        <li class="nav-item {% block home_active %}{% endblock %}">
+          <a class="nav-link" href="{% url "EMS:index" %}"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav-pills float-right">
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ user.first_name }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url "EMS:logout" %}"><span class="glyphicon glyphicon-off"></span> Logout</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" id="loginButton" data-toggle="modal" data-target="#loginModal" href="#"><i class="fa fa-user-o" aria-hidden="true"></i> LogIn</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+{% block body %}{% endblock %}
+
+{% block footer %}
+  <footer class="footer">
+    <div class="container-fluid">
+      <h6 class="text-center" id="footer-text">This web app allows to monitor your power consumption.</h6></hr>
+      <h6 class="text-center" id="footer-text2">Register with you unique service no. & enjoy our services.</h6>
+      <div class="row">
+        <div class="col-lg-4">
+          <h6 class="text-center" id="footer-text3">Created for the purpose of ITS course project.</h6>
+        </div>
+        <div class="offset-lg-4 col-lg-4">
+          <h6 class="text-center" id="footer-text4">
+            Created by : Group - 9 </br> Designed by : <span>NATARAJ KR</span> </br></br>
+            <a href="https://www.facebook.com/nataraj.kr.007" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}
+
+  <!-- jQuery first, then Tether, then Bootstrap JS. -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/84a4aaeeaf.js"></script>
+  <script type="text/javascript" src="../static/js/base1.js"></script>
+</body>
+</html>

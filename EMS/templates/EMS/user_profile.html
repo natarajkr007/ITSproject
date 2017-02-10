@@ -1,1 +1,17 @@
-<h1>This is user Profile page</h1>
+{% extends 'EMS/base1.html' %}
+
+{% load staticfiles %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'EMS/user_profile.css' %}">
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block body %}
+<div class="container" id="user">
+  <div class="jumbotron">
+    <h1 class="display-5 text-center">Welcome</h1>
+    <h1 class="display-3 text Center"></h1>
+  </div>
+</div>
+{% endblock %}

@@ -14,7 +14,7 @@ def index(request):
     context = {
         'user_count' : user_count,
     }
-    return render(request, 'EMS/index.html', context)
+    return render(request, 'EMS/index1.html', context)
 
 
 def register(request):
