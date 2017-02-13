@@ -1,48 +1,47 @@
-{% extends 'EMS/base.html' %}
-{% block title %}EMS-Login{% endblock %}
-{% load staticfiles %}
-{% block stylesheet %}
-<link rel="stylesheet" type="text/css" href="{% static 'EMS/login.css' %}"/>
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>EMS-login</title>
 
-{% block body %}
+  {% load staticfiles %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'thunder.ico' %}"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="{% static 'EMS/login.css' %}">
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-offset-4 col-md-5">
-      <div class="form-login">
-        <h4 style="font-family: 'Montserrat', sans-serif; font-size:40px">Welcome back.</h4>
-        <p class="text-center text-uppercase text-info">Please LogIn</p>
-        <div class="col-md-12">
-          <form class="form" role="form" action="{% url "EMS:login" %}" method="POST" accept-charset="UTF-8" id="login-nav">
-            {% csrf_token %}
-            <div class="form-group">
-              <label class="sr-only" for="username">Unique Service Number : </label>
-              <input name="username" type="text" class="form-control" id="username" placeholder="Service No." autofocus required>
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="password">Password</label>
-              <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
-              <div class="help-block text-right"><a href="#">Forgot the password ?</a></div>
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-            </div>
-            <!-- <div class="checkbox">
-            <label>
-            <input type="checkbox"> keep me logged-in
-          </label>
-        </div> -->
+  <body>
+
+    <nav class="navbar navbar-inverse bg-inverse">
+      <a href="{% url "EMS:index" %}" class="navbar-brand text-center">
+        <span class="navbar-text"><i class="fa fa-lock" aria-hidden="true"></i> EMS - <span class="text-primary">login</span></span>
+      </a>
+    </nav>
+
+    <div class="container col-lg-4 offset-lg-4 col-sm-6 offset-sm-3">
+      <form class="form-signin" role="form" action="{% url "EMS:login" %}" method="POST" accept-charset="UTF-8">
+        {% csrf_token %}
+        <label for="username" class="sr-only">Unique Service Number : </label>
+        <input name="username" type="text" class="form-control" id="username" placeholder="Service No." autofocus required>
+        <label class="sr-only" for="password">Password</label>
+        <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+        <div class="help-block float-right"><a href="#">Forgot the password ?</a></div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
-    </div>
-    <div class="bottom text-center">
-      New here ? <a href="{% url "EMS:register" %}"><b>Join Us</b></a>
-    </div>
-  </div>
-</div>
 
-</div>
-</div>
+      <div class="text-center">
+        New here ? <a href="{% url "EMS:register" %}"><b>Join Us</b></a>
+      </div>
 
-{% endblock %}
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/84a4aaeeaf.js"></script>
+  </body>
+  </html>
