@@ -1,111 +1,67 @@
-{% extends 'EMS/base.html' %}
-{% block title %}Registration{% endblock %}
-{% load staticfiles %}
+{% extends 'EMS/base1.html' %}
+
+{% load static %}
 {% block stylesheet %}
-<link rel="stylesheet" type="text/css" href="{% static 'EMS/register.css' %}"/>
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'EMS/register.css' %}">
 {% endblock %}
 
-
 {% block body %}
-
-<div class="container-fluid">
-
-  {% if registered %}
-  <h4 style="font-family: 'Montserrat', sans-serif; font-size:40px">You Have Already Registered</h4>
-  <a href="{% url "EMS:login" %}">Login page</a><br />
-
-  {% else %}
-  <div>
-    <div class="row">
-      <div class="col-md-offset-4 col-md-5">
-        <div class="form-login" style="background-color: #62ce60;">
-          <h4 style="font-family: 'Montserrat', sans-serif; font-size:40px">Register Yourself</h4>
-          <p class="text-center text-uppercase text-info">save power . save money . save earth</p>
-          <div class="col-md-12">
-            <form class="form" role="form" action="{% url "EMS:register" %}" method="post" accept-charset="UTF-8">
-              {% csrf_token %}
-              <span class="help-block"><span class="asteriskField">*</span>all fields are compulsory</span>
-              <div class="col-sm-12 text-primary"><strong>Name :</strong></span></div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <span class="text-danger small">{{ user_form.first_name.errors }}</span>
-                </div>
-                <label class="sr-only" for="first_name">First Name</label>
-                <input name="first_name" type="text" class="form-control" id="first_name" placeholder="First Name" autofocus required>
-              </div>
-              <div class="col-sm-12 text-primary"><strong>Service No. :</strong></span></div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <span class="text-danger small">{{ user_form.username.errors }}</span>
-                </div>
-                <label class="sr-only" for="username">Username</label>
-                <input name="username" type="text" class="form-control" id="username" placeholder="Service No." required>
-                <span class="help-block">Your unique service no.</span>
-              </div>
-              <div class="col-sm-12 text-primary"><strong>Email :</strong></div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <span class="text-danger small">{{ user_form.email.errors }}</span>
-                </div>
-                <label class="sr-only" for="email">Email</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="Email address" required>
-                <span class="help-block">Give us a valid one</span>
-              </div>
-              <div class="col-sm-12 text-primary"><strong>Password :</strong></div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <span class="text-danger small">{{ user_form.password.errors }}</span>
-                </div>
-                <label class="sr-only" for="password">Password</label>
-                <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
-                <span class="help-block">Don't chech with others</span>
-              </div>
-              <div class="col-sm-12 text-primary"><strong>Door No. :</strong></div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <span class="text-danger small">{{ profile_form.address.errors }}</span>
-                </div>
-                <label class="sr-only" for="address">Address</label>
-                <input name="address" type="text" class="form-control" id="address" placeholder="Door No." required>
-                <span class="help-block">Enter your Door no. only</span>
-              </div>
-              <div class="col-sm-12 text-primary"><strong>Phone No. :</strong></div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <span class="text-danger small">{{ profile_form.phone_no.errors }}</span>
-                </div>
-                <label class="sr-only" for="phone_no">Phone</label>
-                <input name="phone_no" type="text" class="form-control" id="phone_no" placeholder="Phone No." required>
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-group-lg btn-primary btn-block">Register</button>
-              </div>
-
-              <!--{% for field in profile_form %}
-              <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-              <span class="text-danger small">{{ field.errors }}</span>
-            </div>
-            <label class="control-label col-sm-2" for="song_title">{{ field.label_tag }}</label>
-            <div class="col-sm-10">{{ field }}</div>
-          </div>
-          {% endfor %}-->
-
-        </form>
+<div class="container">
+  <div class="text-center text-primary"><h1>Register Yourself</h1></div>
+  <div class="col-lg-6 offset-lg-3">
+    <form class="form" role="form" action="{% url "EMS:register" %}" method="post" accept-charset="UTF-8">
+      {% csrf_token %}
+      <small class="form-text text-muted"><span class="asteriskField">*</span>all fields are compulsory</small>
+      <div class="form-group">
+        <div class="offset-lg-2 col-lg-10">
+          <span class="text-danger small">{{ user_form.first_name.errors }}</span>
+        </div>
+        <label class="text-primary" for="first_name">Name:</label>
+        <input name="first_name" type="text" class="form-control" id="first_name" placeholder="First Name" autofocus required>
       </div>
-    </div>
+      <div class="form-group">
+        <div class="offset-lg-2 col-lg-10">
+          <span class="text-danger small">{{ user_form.username.errors }}</span>
+        </div>
+        <label class="text-primary" for="username">Service no.:</label>
+        <input name="username" type="text" class="form-control" id="username" placeholder="Service No." required>
+      </div>
+      <div class="form-group">
+        <div class="offset-lg-2 col-lg-10">
+          <span class="text-danger small">{{ user_form.email.errors }}</span>
+        </div>
+        <label class="text-primary" for="email">Email:</label>
+        <input name="email" type="email" class="form-control" id="email" placeholder="Email Address" required>
+      </div>
+      <div class="form-group">
+        <div class="offset-lg-2 col-lg-10">
+          <span class="text-danger small">{{ user_form.password.errors }}</span>
+        </div>
+        <label class="text-primary" for="password">Passsword:</label>
+        <input name="password" type="text" class="form-control" id="password" placeholder="Password" required>
+      </div>
+      <div class="form-group">
+        <div class="offset-lg-2 col-lg-10">
+          <span class="text-danger small">{{ user_form.address.errors }}</span>
+        </div>
+        <label class="text-primary" for="address">Address:</label>
+        <input name="address" type="text" class="form-control" id="address" placeholder="Area name only..." required>
+      </div>
+      <div class="form-group">
+        <div class="offset-lg-2 col-lg-10">
+          <span class="text-danger small">{{ user_form.phone_no.errors }}</span>
+        </div>
+        <label class="text-primary" for="address">Phone No.:</label>
+        <input name="phone_no" type="text" class="form-control" id="phone_no" placeholder="Phone number" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-group-lg btn-primary btn-block">Register</button>
+      </div>
+    </form>
   </div>
 </div>
-</div>
-</div>
+{% endblock %}
 
-{% endif %}
-
-<script type="text/javascript">
-    document.getElementById("loginButton").onclick = function () {
-        location.href = "{% url "EMS:login" %}";
-    };
-</script>
-
+{% block jsfiles %}
+<script type="text/javascript" src="{% static "js/register.js" %}"></script>
 {% endblock %}
