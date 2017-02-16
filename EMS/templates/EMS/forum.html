@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="/EMS/forum/" method="post">
+    {% csrf_token %}
+    {{ form }}
+
+    <input type="submit" value="Submit" />
+</form>
+<h1>Other members complaints:</h1>
+{% for i in comp %}
+<p> Service no:{{ i.serviceno }}<br> Complaint:{{ i.complaint }}<br>
+    Solution:{{i.solution}}
+    <!--<p>hi</p>-->
+
+    <br>
+    {% endfor %}
+
+</body>
+</html>

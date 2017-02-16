@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>monitor</title>
+</head>
+<body>
+{% for i in consumption %}
+<p> Your consumption is {{ i.consumption }} time {{ i.time_stamp }}
+<br>
+    {% endfor %}
+</body>
+</html>

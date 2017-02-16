@@ -18,3 +18,5 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('address', 'phone_no')
+class NameForm(forms.Form):
+    complaint = forms.CharField(label='Complaint', max_length=100)

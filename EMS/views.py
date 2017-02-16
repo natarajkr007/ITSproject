@@ -6,7 +6,11 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from .models import UserProfile
-
+from .forms import NameForm
+import urllib2
+import json
+import urllib
+from django.contrib.auth.models import User
 # Use the login_required() decorator to ensure only those logged in can access the view.
 
 def index(request):
@@ -133,3 +137,53 @@ def user_logout(request):
 @login_required
 def user_profile(request):
     return render(request, 'EMS/user_profile.html')
+@login_required
+def monitor (request):
+    if request.user.is_authenticated():
+        username = request.user.username
+    url = ('https://energymonitoring.000webhostapp.com/getenergy.php/?serviceno='+str(username))
+    f = urllib2.urlopen(url)  # send a GET request
+    x = str(f.read())
+    r = unicode(x, "utf-8")  # convert it into string using utf-8 encoding
+    r = json.loads(r)  # python lib to load a json string as dictionary
+    t = r['result']
+    #k=t['consumption']
+    context = {
+        'consumption': t,
+    }
+    return render(request, 'EMS/monitor.html', context)
+def forum1(request):
+    return render(request,'EMS/forum.html',)
+def forum(request):
+
+    if request.method == 'POST':
+
+        form = NameForm(request.POST)
+
+        if form.is_valid():
+            complaint = form.cleaned_data['complaint']
+            complaint=complaint.replace(" ","+")
+            url = ('https://energymonitoring.000webhostapp.com/forumenter.php/?complaint='+complaint)
+            f = urllib2.urlopen(url)
+            x = str(f.read())
+            request.method='NULL'
+            return forum(request)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = NameForm()
+        g=1
+    url = ('https://energymonitoring.000webhostapp.com/getforum.php')
+    f = urllib2.urlopen(url)  # send a GET request
+    x = str(f.read())
+    r = unicode(x, "utf-8")  # convert it into string using utf-8 encoding
+    r = json.loads(r)  # python lib to load a json string as dictionary
+    t = r['result']
+
+    context = {
+
+            'comp': t,
+        }
+    if g==1:
+        context.update({'form': form})
+    return render(request, 'EMS/forum.html', context)
