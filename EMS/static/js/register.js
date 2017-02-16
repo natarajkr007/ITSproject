@@ -1,24 +1,5 @@
-// $(document).ready(function(){
-//   $(document).getElementById('loginButton').onclick(function(){
-//     location.href = "www.google.com";
-//   });
-// });
-
-$(document).getElementById("loginButton").onclick = function () {
-        location.href = "www.google.com";
-    };
+// var button = document.getElementById("loginButton");
 //
-// $(document).ready(function() {
-// 	$(window).scroll(function() {
-//   	if($(document).scrollTop() > 10) {
-//     	$('#transition-nav').addClass('shrink');
-//     }
-//     else {
-//     $('#transition-nav').removeClass('shrink');
-//     }
-//   });
-// });
-//
-// $(document).getElementById("loginButton").onclick = function () {
-//   location.href = "{% url "EMS:login" %}";
+// button.onclick = function() {
+//   location.href = "{% url 'EMS:login' %}";
 // };

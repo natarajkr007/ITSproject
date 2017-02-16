@@ -137,6 +137,7 @@ def user_logout(request):
 @login_required
 def user_profile(request):
     return render(request, 'EMS/user_profile.html')
+
 @login_required
 def monitor (request):
     if request.user.is_authenticated():
@@ -152,18 +153,21 @@ def monitor (request):
         'consumption': t,
     }
     return render(request, 'EMS/monitor.html', context)
-def forum1(request):
-    return render(request,'EMS/forum.html',)
+
+@login_required
 def forum(request):
 
     if request.method == 'POST':
+
+        if request.user.is_authenticated():
+            username = request.user.username
 
         form = NameForm(request.POST)
 
         if form.is_valid():
             complaint = form.cleaned_data['complaint']
             complaint=complaint.replace(" ","+")
-            url = ('https://energymonitoring.000webhostapp.com/forumenter.php/?complaint='+complaint)
+            url = ('https://energymonitoring.000webhostapp.com/forumenter.php/?complaint='+complaint+'&serviceno='+username)
             f = urllib2.urlopen(url)
             x = str(f.read())
             request.method='NULL'
