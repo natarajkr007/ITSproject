@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,render_to_response, redirect
 from EMS.forms import UserForm, UserProfileForm
@@ -108,7 +109,7 @@ def user_login(request):
                 login(request, user)
                 # return HttpResponseRedirect('/EMS/')
                 request.session['user'] = user.username
-                return redirect('EMS:index')
+                return redirect('EMS:profile')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your account is disabled.")
@@ -130,6 +131,8 @@ def user_login(request):
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
+
+    messages.success(request, 'Logged out successfuly')
 
     # Take the user back to the homepage.
     return redirect('EMS:index')

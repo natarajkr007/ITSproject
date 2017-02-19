@@ -9,6 +9,6 @@ urlpatterns = [
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^profile/$', views.user_profile, name='profile'),
-    url(r'^monitor/$',views.monitor,name='monitor'),
-    url(r'^forum/$',views.forum,name='forum'),
+    url(r'^monitor/$', views.monitor,name='monitor'),
+    url(r'^forum/$', views.forum,name='forum'),
 ]
