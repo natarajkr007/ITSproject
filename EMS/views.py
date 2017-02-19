@@ -66,6 +66,9 @@ def register(request):
             # Update our variable to tell the template registration was successful.
             registered = True
 
+            messages.success(request, 'Registration complete. Please, LogIn')
+            return redirect('EMS:index')
+
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.
@@ -131,9 +134,7 @@ def user_login(request):
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
-
     messages.success(request, 'Logged out successfuly')
-
     # Take the user back to the homepage.
     return redirect('EMS:index')
 
