@@ -140,7 +140,13 @@ def user_logout(request):
 
 @login_required
 def user_profile(request):
-    return render(request, 'EMS/user_profile.html')
+    serviceno = request.user.username
+    user_id = User.objects.get(username=serviceno).id
+    role = UserProfile.objects.get(user=user_id).role
+    if request.user.is_authenticated and role == 'customer':
+        return render(request, 'EMS/user_profile.html')
+    else:
+        return HttpResponse('he is not customer')
 
 @login_required
 def monitor (request):
