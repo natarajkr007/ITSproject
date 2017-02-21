@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+@import url('https://fonts.googleapis.com/css?family=Russo+One');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+body {
+  background-image: url('../background1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.navbar {
+      height: 115px;
+      transition: all ease .9s;
+}
+
+i#navbrand-icon {
+  color: yellow;
+  border-color: black;
+}
+
+.navbar-light .navbar-brand, .navbar-light .navbar-toggler {
+    color: rgb(197, 110, 70);
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 36px;
+    transition: all ease .9s;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #f7f7f9;
+  margin-left: 10px;
+  font-size: 20px;
+  text-align: -webkit-center;
+}
+
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .open>.nav-link {
+  color: #5dd3f7;
+  background-color: white;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: -webkit-center;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: navajowhite;
+}
+
+#transition-nav.shrink {
+    height: 55px;
+    transition: all ease .9s;
+    background: #FF9800;
+}
+
+#transition-nav.shrink #transition-nav-brand {
+  transition: all ease .9s;
+  font-size: 26px;
+}
+
+.container#home {
+    padding-top: 108px;
+}
+
+.jumbotron#jumbotron-home {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.jumbotron#jumbotron-home h1{
+  color: tomato;
+  font-weight: 700;
+  font-size: 55px;
+}
+
+.jumbotron#jumbotron-home p{
+  color: floralwhite;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.jumbotron#jumbotron-home h2{
+  font-family: 'Russo One', sans-serif;
+  color: springgreen;
+}
+
+.main-item.col-lg-4 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.333333%;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    /* margin-top: 60px; */
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.main-item.col-lg-4 h3 {
+    font-size: 5.75rem;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 450px;
+    line-height: 60px;
+    background-color: rgba(37, 41, 43, 0.98);
+    padding: 50px;
+}
+
+h6#footer-text {
+    color: #a59f97;
+}
+
+h6#footer-text2 {
+    padding-top: 10px;
+    color: #b59366;
+    font-size: 25px;
+}
+
+h6#footer-text3 {
+    padding-top: 120px;
+    margin-top: 5px;
+    padding-bottom: 125px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #b59366;
+    font-size: 20px;
+    border-style: double;
+}
+
+h6#footer-text4 {
+    padding-top: 120px;
+    margin-top: 5px;
+    padding-bottom: 70px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 20px;
+    border-style: double;
+    border-color: #b59366;
+    color: #fff;
+}
+
+h6#footer-text4 span {
+  font-family: 'Dancing Script', cursive;
+  color: #5dd3f7;
+}

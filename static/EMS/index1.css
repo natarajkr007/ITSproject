@@ -1,0 +1,6 @@
+.container-fluid#user-count {
+  background-color: lightgray;
+  margin-bottom: -8px;
+  padding: 20px;
+  opacity: 0.9;
+}
