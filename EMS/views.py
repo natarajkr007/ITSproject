@@ -6,10 +6,11 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
-from .models import UserProfile
+from .models import UserProfile,Energy
 from .forms import NameForm
 import urllib2
 import json
+import datetime
 import urllib
 from django.contrib.auth.models import User
 # Use the login_required() decorator to ensure only those logged in can access the view.
@@ -164,7 +165,16 @@ def monitor (request):
     }
     return render(request, 'EMS/monitor.html', context)
 
+def show(request):
+    if request.user.is_authenticated():
+        username = request.user.username
+        energy1=Energy.objects.filter(serviceno=username)
+        context = {
+            'energy': energy1,
+        }
+        return render(request, 'EMS/show.html', context)
 @login_required
+
 def forum(request):
 
     if request.method == 'POST':
@@ -201,3 +211,16 @@ def forum(request):
     if g==1:
         context.update({'form': form})
     return render(request, 'EMS/forum.html', context)
+
+def insert(request):
+    if request.method=='GET':
+        serviceno=request.GET.get('sno', '')
+        consumption=request.GET.get('consumption','')
+        timestamp=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        p = Energy(serviceno=serviceno,consumption=consumption,timestamp=timestamp)
+        p.save()
+        context = {
+
+            'comp': 'true',
+        }
+        return render(request, 'EMS/insert.html', context)

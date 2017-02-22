@@ -20,3 +20,13 @@ class UserProfile(models.Model):
     # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
         return self.user.username
+
+
+
+class Energy(models.Model):
+    serviceno=models.CharField(max_length=10, null=False, blank=False)
+    consumption=models.CharField(max_length=10, null=False, blank=False)
+    timestamp = models.CharField(max_length=50,null=False,blank=False)
+
+    def __str__(self):
+        return self.serviceno
