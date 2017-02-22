@@ -10,8 +10,18 @@
 {% block body %}
 <div class="container" id="user">
   <div class="jumbotron">
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Logged in Successfully</strong>
+    </div>
     <h1 class="display-5 text-center">Welcome</h1>
     <h1 class="display-3 text Center"></h1>
   </div>
 </div>
+{% endblock %}
+
+{% block jsfile %}
+<script type="text/javascript" src="{% static "js/user-profile.js" %}"></script>
 {% endblock %}
