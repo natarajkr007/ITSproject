@@ -2,9 +2,21 @@
   padding-top: 108px;
 }
 
+.container#user .jumbotron {
+  padding: 50px;
+  background-image: url('../welcome.jpg');
+  background-position: center;
+  border-radius: 20px;
+}
+
+h1#welcome {
+  color: #fff;
+}
+
 .alert.alert-success{
   width: 250px;
   height: 50px;
   position: absolute;
-  transform: translateX(780px) translateY(-50px);  
+  -webkit-transform: translateX(780px) translateY(-50px);
+          transform: translateX(780px) translateY(-50px);
 }
