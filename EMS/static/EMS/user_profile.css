@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Barrio|Mr+Dafoe|Orbitron|Supermercado+One');
+
 .container#user {
   padding-top: 108px;
 }
@@ -6,11 +8,15 @@
   padding: 50px;
   background-image: url('../welcome.jpg');
   background-position: center;
-  border-radius: 20px;
+  border-radius: 20px 20px 0px 0px;
 }
 
 h1#welcome {
   color: #fff;
+}
+
+h4#welcome {
+  color: #f0ad4e;
 }
 
 .alert.alert-success{
@@ -19,4 +25,65 @@ h1#welcome {
   position: absolute;
   -webkit-transform: translateX(780px) translateY(-50px);
           transform: translateX(780px) translateY(-50px);
+}
+
+.notifications {
+    background: #fff;
+    padding: 10px;
+    height: 350px;
+    margin-top: -30px;
+    border-style: solid;
+    border-radius: 0px 0px 0px 20px;
+}
+
+.notifications h3 {
+  font-family: 'Mr Dafoe', cursive;
+  font-size: 45px;
+  background: rgba(255, 0, 0, 0.79);
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.stats {
+    background: #fff;
+    padding: 10px;
+    height: 350px;
+    margin-top: -30px;
+    border-style: solid;
+    border-radius: 0px 0px 20px 0px;
+}
+
+.stats h3 {
+  font-family: 'Barrio', cursive;
+  font-size: 45px;
+  background: rgba(255, 241, 0, 0.87);
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.notifications hr, .stats hr {
+  border-top: 3px dotted rgba(0,0,0,.3);
+}
+
+p#stats-text1, p#stats-text3 {
+  display: block;
+  font-family: 'Supermercado One', cursive;
+  padding-left: 10px;
+  font-size: 30px;
+}
+
+p#stats-text2 {
+  display: inline-block;
+  padding-top: 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 50px;
+  color: #444;
+  text-shadow:
+    1px 0px 1px #ccc, 0px 1px 1px #eee,
+    2px 1px 1px #ccc, 1px 2px 1px #eee,
+    3px 2px 1px #ccc, 2px 3px 1px #eee,
+    4px 3px 1px #ccc, 3px 4px 1px #eee,
+    5px 4px 1px #ccc, 4px 5px 1px #eee,
+    6px 5px 1px #ccc, 5px 6px 1px #eee,
+    7px 6px 1px #ccc;
 }

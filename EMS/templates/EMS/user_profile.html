@@ -17,7 +17,28 @@
       <strong>Logged in Successfully</strong>
     </div>
     <h1 class="display-5 text-center" id="welcome">Welcome</h1>
-    <h4 class="display-5 text-center">save world . save power . save money</h4>
+    <h4 class="display-5 text-center" id="welcome">save world . save power . save money</h4>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center notifications">
+        <h3>Notifications</h3>
+        <hr/>
+      </div>
+      <div class="col-md-6 text-center stats">
+        <h3>Stats</h3>
+        <hr/>
+        <div class="row col-md-12">
+          <p class="pull-left" id="stats-text1">You have consumed :</p>
+        </div>
+        <div class="col-md-12">
+          <p id="stats-text2">{{ sum }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="pull-right" id="stats-text3">till now.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

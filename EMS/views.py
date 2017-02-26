@@ -144,8 +144,17 @@ def user_profile(request):
     serviceno = request.user.username
     user_id = User.objects.get(username=serviceno).id
     role = UserProfile.objects.get(user=user_id).role
+    energy = Energy.objects.filter(serviceno=serviceno)
+    sum = 0
+
+    for energy in energy:
+        sum += int(energy.consumption)
+
+    context = {
+        'sum' : sum,
+    }
     if request.user.is_authenticated and role == 'customer':
-        return render(request, 'EMS/user_profile.html')
+        return render(request, 'EMS/user_profile.html', context)
     else:
         return HttpResponse('he is not customer')
 
@@ -173,8 +182,8 @@ def show(request):
             'energy': energy1,
         }
         return render(request, 'EMS/show.html', context)
-@login_required
 
+@login_required
 def forum(request):
 
     if request.method == 'POST':
