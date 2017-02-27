@@ -150,7 +150,7 @@ def user_profile(request):
     sum = 0
 
     for energy in energy:
-        sum += int(energy.consumption)
+        sum += float(energy.consumption)
 
     context = {
         'sum' : sum,
@@ -177,14 +177,27 @@ def monitor (request):
     return render(request, 'EMS/monitor.html', context)
 
 def show(request):
+
+    today_day = str(datetime.datetime.now().date()).split("-")[2]  # gets today's date to make a query
+    today_month = str(datetime.datetime.now().date()).split("-")[1]
+    today_year = str(datetime.datetime.now().date()).split("-")[0]
+
     if request.user.is_authenticated():
         username = request.user.username
-        energy1=Energy.objects.filter(serviceno=username)
-        serialized_obj = serializers.serialize('json', [ energy1, ])
-        js_data = json.dumps(serialized_obj)
+        energy1 = Energy.objects.filter(serviceno = username, year = today_year, month = today_month, day = today_day)
+        time = []
+        consumption = []
+        for i in energy1:
+            time.append(str(i.hour))
+            consumption.append(float(i.consumption))
+
+        # serialized_obj = serializers.serialize('json', [ energy1])
+        # js_data = json.dumps(serialized_obj)
+
         context = {
             'energy': energy1,
-            'js_data': js_data,
+            'time': time,
+            'consumption': consumption,
         }
         return render(request, 'EMS/show.html', context)
 

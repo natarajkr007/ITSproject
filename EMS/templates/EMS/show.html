@@ -19,9 +19,75 @@
   </div>
 
   <script type="text/javascript" src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
   <script type="text/javascript" src="{% static "js/Chart.bundle.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "js/show.js" %}"></script>
+  <!-- <script type="text/javascript" src="{% static "js/show.js" %}"></script> -->
+
+  <script type="text/javascript">
+
+  var ctx = $("#myChart");
+
+  var data = {
+    // labels: ["January", "February", "March", "April", "May", "June", "July", "{{ name }}"],
+    labels: [
+      {% for i in time %}
+        "{{ i }}",
+      {% endfor %}
+    ],
+    datasets: [
+      {
+        label: "My First dataset",
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        // data: [65, 59, 80, 81, 56, 99, 88, {{ age }}],
+        data: [
+          {% for i in consumption %}
+            {{ i }},
+          {% endfor %}
+        ],
+        spanGaps: false,
+      }
+    ]
+  };
+
+  var options = {
+    animation : {
+      duration : 2000,
+      easing : "easeOutCirc"
+    },
+    responsive: true,
+    legend : {
+      display : true,
+      position : 'bottom',
+      labels : {
+        fontColor : 'red',
+      },
+    },
+  };
+
+  var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options : options
+  });
+
+  </script>
 
 </body>
 </html>
