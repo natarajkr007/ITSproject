@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^profile/$', views.user_profile, name='profile'),
     url(r'^monitor/$', views.monitor,name='monitor'),
     url(r'^forum/$', views.forum,name='forum'),
-url(r'^insert/$', views.insert,name='insert'),
-url(r'^show/$', views.show,name='show'),
+    url(r'^insert/$', views.insert,name='insert'),
+    url(r'^show/$', views.show,name='show'),
 
 ]

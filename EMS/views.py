@@ -13,6 +13,8 @@ import json
 import datetime
 import urllib
 from django.contrib.auth.models import User
+from django.core import serializers
+
 # Use the login_required() decorator to ensure only those logged in can access the view.
 
 def index(request):
@@ -178,8 +180,11 @@ def show(request):
     if request.user.is_authenticated():
         username = request.user.username
         energy1=Energy.objects.filter(serviceno=username)
+        serialized_obj = serializers.serialize('json', [ energy1, ])
+        js_data = json.dumps(serialized_obj)
         context = {
             'energy': energy1,
+            'js_data': js_data,
         }
         return render(request, 'EMS/show.html', context)
 
@@ -222,11 +227,23 @@ def forum(request):
     return render(request, 'EMS/forum.html', context)
 
 def insert(request):
-    if request.method=='GET':
-        serviceno=request.GET.get('sno', '')
-        consumption=request.GET.get('consumption','')
-        timestamp=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        p = Energy(serviceno=serviceno,consumption=consumption,timestamp=timestamp)
+    if request.method == 'GET':
+        serviceno = request.GET.get('sno', '')
+        consumption = request.GET.get('consumption','')
+        timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        split_timestamp = timestamp.split()
+
+        date = split_timestamp[0]
+        split_date = date.split("-")
+        year = split_date[0]
+        month = split_date[1]
+        day = split_date[2]
+
+        time = split_timestamp[1]
+        split_time = time.split(":")
+        hour = split_time[0]
+
+        p = Energy(serviceno=serviceno, consumption=consumption, timestamp=timestamp, hour=hour, year=year, month=month, day=day)
         p.save()
         context = {
 

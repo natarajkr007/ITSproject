@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'EMS/show.css' %}">
+
 </head>
 <body>
 
-{% for i in energy %}
-<p>Your consumption is {{ i.consumption }} time {{ i.timestamp }}</p>
-{% endfor %}
+  {% for i in energy %}
+  <p>Your consumption is {{ i.consumption }} time {{ i.timestamp }}</p>
+  {% endfor %}
+
+  <div class="container">
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+
+  <script type="text/javascript" src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/Chart.bundle.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/show.js" %}"></script>
+
 </body>
 </html>

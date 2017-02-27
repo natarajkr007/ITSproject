@@ -28,6 +28,10 @@ class Energy(models.Model):
     consumption=models.CharField(max_length=10, null=False, blank=False)
     timestamp = models.CharField(max_length=50,null=False,blank=False)
 
+    hour = models.CharField(max_length=10, null=False, blank=False)
+    year = models.CharField(max_length=10, null=False, blank=False)
+    month = models.CharField(max_length=10, null=False, blank=False)
+    day = models.CharField(max_length=10, null=False, blank=False)
+
     def __str__(self):
         return self.serviceno
-        
