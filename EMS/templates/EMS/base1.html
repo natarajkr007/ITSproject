@@ -29,7 +29,7 @@
         <li class="nav-item {% block home_active %}{% endblock %}">
           <a class="nav-link" href="{% url "EMS:index" %}"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% block monitor_active %}{% endblock %}">
           <a class="nav-link" href="{% url "EMS:show" %}">Monitor</a>
         </li>
       </ul>
