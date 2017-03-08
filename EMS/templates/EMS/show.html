@@ -8,11 +8,12 @@
 
 {% block body %}
 <div class="container" id="monitor">
-  {% for i in energy %}
+  <!-- {% for i in energy %}
   <p>Your consumption is {{ i.consumption }} time {{ i.timestamp }}</p>
-  {% endfor %}
-
-  <canvas id="myChart"></canvas>
+  {% endfor %} -->
+  <div class="chart">
+    <canvas id="myChart"></canvas>
+  </div>
 
 </div>
 {% endblock %}
@@ -27,55 +28,59 @@
 var ctx = $("#myChart");
 
 var data = {
-  // labels: ["January", "February", "March", "April", "May", "June", "July", "{{ name }}"],
   labels: [
     {% for i in time %}
-    "{{ i }}",
+    "{{ i }} hour",
     {% endfor %}
   ],
-  datasets: [
-    {
-      label: "My First dataset",
-      fill: true,
-      lineTension: 0.1,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(75,192,192,1)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      // data: [65, 59, 80, 81, 56, 99, 88, {{ age }}],
-      data: [
-        {% for i in consumption %}
-        {{ i }},
-        {% endfor %}
-      ],
-      spanGaps: false,
-    }
-  ]
+  datasets: [{
+    label: "in KWH's",
+    data: [
+      {% for i in consumption %}
+      {{ i }},
+      {% endfor %}
+    ],
+    backgroundColor: [
+      'rgba(215, 191, 61, 0.55)',
+    ],
+    borderColor: [
+      'rgba(255, 159, 64, 1)',
+    ],
+  }]
 };
 
 var options = {
-  animation : {
-    duration : 2000,
-    easing : "easeOutCirc"
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
   },
-  responsive: true,
-  legend : {
-    display : true,
-    position : 'bottom',
-    labels : {
-      fontColor : 'red',
+  responsiveAnimationDuration: 100,
+  title: {
+    text: "Today's hourly energy readings",
+    display: true,
+    fontSize: 20,
+  },
+  legend: {
+    position: 'bottom',
+    labels: {
+      boxWidth: 40,
     },
+  },
+  animation: {
+    duration: 1500,
+    easing: 'easeInBounce',
+  },
+  elements: {
+      line: {
+        tension: 0,
+        fill: true,
+      },
+      point: {
+        radius: 4,
+      }
   },
 };
 

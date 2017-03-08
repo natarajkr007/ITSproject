@@ -3,3 +3,11 @@
   background: #fff;
   margin-top: 100px;
 }
+
+.chart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #fff;
+    padding: 30px;
+}

@@ -191,9 +191,6 @@ def show(request):
             time.append(str(i.hour))
             consumption.append(float(i.consumption))
 
-        # serialized_obj = serializers.serialize('json', [ energy1])
-        # js_data = json.dumps(serialized_obj)
-
         context = {
             'energy': energy1,
             'time': time,
