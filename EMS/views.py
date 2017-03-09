@@ -18,6 +18,8 @@ from django.core import serializers
 # Use the login_required() decorator to ensure only those logged in can access the view.
 
 def index(request):
+    if request.user.is_authenticated:
+        return redirect('EMS:profile')
     user_count = UserProfile.objects.count()
     context = {
         'user_count' : user_count,
@@ -29,7 +31,7 @@ def register(request):
     # Like before, get the request's context.
     # context = RequestContext(request)
     if request.user.is_authenticated:
-        return redirect('EMS:index')
+        return redirect('EMS:profile')
 
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
@@ -152,11 +154,13 @@ def user_profile(request):
     for energy in energy:
         sum += float(energy.consumption)
 
-    context = {
+    context_user = {
         'sum' : sum,
     }
     if request.user.is_authenticated and role == 'customer':
-        return render(request, 'EMS/user_profile.html', context)
+        return render(request, 'EMS/user_profile.html', context_user)
+    elif request.user.is_authenticated and role == 'official':
+        return render(request, 'EMS/admin_profile.html', context_user)
     else:
         return HttpResponse('he is not customer')
 
