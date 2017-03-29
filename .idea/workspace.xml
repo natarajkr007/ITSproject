@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ccf1a7a-ad78-4419-a7af-ece74a7d863e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EMS/templates/EMS/admin_profile.html" afterPath="$PROJECT_DIR$/EMS/templates/EMS/admin_profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EMS/templates/EMS/monitor.html" afterPath="$PROJECT_DIR$/EMS/templates/EMS/monitor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EMS/templates/EMS/show.html" afterPath="$PROJECT_DIR$/EMS/templates/EMS/show.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EMS/urls.py" afterPath="$PROJECT_DIR$/EMS/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EMS/views.py" afterPath="$PROJECT_DIR$/EMS/views.py" />
-    </list>
+    <list default="true" id="6ccf1a7a-ad78-4419-a7af-ece74a7d863e" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/EMS/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="314">
-              <caret line="323" column="31" lean-forward="true" selection-start-line="323" selection-start-column="31" selection-end-line="323" selection-end-column="31" />
+              <caret line="323" column="31" lean-forward="false" selection-start-line="323" selection-start-column="31" selection-end-line="323" selection-end-column="31" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -48,7 +40,7 @@
       <file leaf-file-name="admin_profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EMS/templates/EMS/admin_profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
+            <state relative-caret-position="390">
               <caret line="26" column="77" lean-forward="false" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
               <folding />
             </state>
@@ -110,7 +102,7 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EMS/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="225">
               <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -184,8 +176,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,6 +185,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ITSproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ITSproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ITSproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ITSproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ITSproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EMS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -290,6 +312,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -503,7 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,7 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="14" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -851,7 +873,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EMS/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="225">
           <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -861,7 +883,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EMS/templates/EMS/admin_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
+        <state relative-caret-position="390">
           <caret line="26" column="77" lean-forward="false" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
           <folding />
         </state>
@@ -888,7 +910,7 @@
     <entry file="file://$PROJECT_DIR$/EMS/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
-          <caret line="323" column="31" lean-forward="true" selection-start-line="323" selection-start-column="31" selection-end-line="323" selection-end-column="31" />
+          <caret line="323" column="31" lean-forward="false" selection-start-line="323" selection-start-column="31" selection-end-line="323" selection-end-column="31" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
