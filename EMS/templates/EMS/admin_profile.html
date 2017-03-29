@@ -1,0 +1,40 @@
+{% extends 'EMS/base1.html' %}
+{% load staticfiles %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'EMS/official.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<div class="table-title">
+<h3>User consumption</h3>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">User id</th>
+<th class="text-left">Daily consumption</th>
+    <th class="text-left">Monthly consumption</th>
+    <th class="text-left">Send messages</th>
+</tr>
+</thead>
+<tbody class="table-hover" >
+{% for i,j,k in total %}
+<tr>
+<td class="text-left">{{ i.user }}</td>
+<td class="text-left">{{j}}</td>
+<td class="text-left">{{ k }}</td>
+    <td class="text-left"> <a href="{% url "EMS:message" %}?number={{ i.user }}">Message!</a> </td>
+    </tr>
+{% endfor %}
+
+</tbody>
+</table>
+
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+
+

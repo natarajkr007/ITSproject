@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^forum/$', views.forum,name='forum'),
     url(r'^insert/$', views.insert,name='insert'),
     url(r'^show/$', views.show,name='show'),
+url(r'^message/$', views.message,name='message'),
 
 ]

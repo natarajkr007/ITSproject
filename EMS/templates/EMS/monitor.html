@@ -5,9 +5,14 @@
     <title>monitor</title>
 </head>
 <body>
-{% for i in consumption %}
-<p> Your consumption is {{ i.consumption }} time {{ i.time_stamp }}
+
+<p> {{ consumption }}
+    <p>{{ role }}
 <br>
-    {% endfor %}
+{% for i in energy %}
+<p>{{ i }}  <br>
+{% endfor %}
+
+
 </body>
 </html>

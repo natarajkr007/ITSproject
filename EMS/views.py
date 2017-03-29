@@ -12,6 +12,8 @@ import urllib2
 import json
 import datetime
 import urllib
+import cookielib
+from getpass import getpass
 from django.contrib.auth.models import User
 from django.core import serializers
 
@@ -159,24 +161,68 @@ def user_profile(request):
     }
     if request.user.is_authenticated and role == 'customer':
         return render(request, 'EMS/user_profile.html', context_user)
-    elif request.user.is_authenticated and role == 'official':
-        return render(request, 'EMS/admin_profile.html', context_user)
-    else:
-        return HttpResponse('he is not customer')
+    elif request.user.is_authenticated and role == 'O':
+        user = UserProfile.objects.all()
+        energy = Energy.objects.all()
+        day = []
+        for i in user:
+            sum = 0.0
+            for j in energy:
+                timestamp = j.timestamp
+                dayMonth = timestamp.split()
+                if str(i.user) == str(j.serviceno) and str(dayMonth[0]) == str(datetime.datetime.now().strftime('%Y-%m-%d')):
+                    sum = sum + float(j.consumption)
+            day.append(sum)
+        month=[]
+        for i in user:
+            sum = 0.0
+            for j in energy:
+                if str(i.user) == str(j.serviceno) and str(j.month) == str(datetime.datetime.now().strftime('%m')) and str(j.year)==str(datetime.datetime.now().strftime('%Y')):
+                    sum = sum + float(j.consumption)
+            month.append(sum)
+
+        total=zip(user,day,month)
+        context_admin = {
+            'total':total,
+        }
+
+        return render(request, 'EMS/admin_profile.html', context_admin)
+    # else:
+    #     return HttpResponse('he is not customer')
 
 @login_required
 def monitor (request):
-    if request.user.is_authenticated():
+    username="default"
+    if request.user.is_authenticated() and request.user.is_superuser:
         username = request.user.username
-    url = ('https://energymonitoring.000webhostapp.com/getenergy.php/?serviceno='+str(username))
-    f = urllib2.urlopen(url)  # send a GET request
-    x = str(f.read())
-    r = unicode(x, "utf-8")  # convert it into string using utf-8 encoding
-    r = json.loads(r)  # python lib to load a json string as dictionary
-    t = r['result']
-    #k=t['consumption']
+    # url = ('https://energymonitoring.000webhostapp.com/getenergy.php/?serviceno='+str(username))
+    # f = urllib2.urlopen(url)  # send a GET request
+    # x = str(f.read())
+    # r = unicode(x, "utf-8")  # convert it into string using utf-8 encoding
+    # r = json.loads(r)  # python lib to load a json string as dictionary
+    # t = r['result']
+    # #k=t['consumption']
+    serviceno = request.user.username
+    user_id = User.objects.get(username=serviceno).id
+    role = UserProfile.objects.get(user=user_id).role
+    user = UserProfile.objects.all()
+    energy = Energy.objects.all()
+    k=[]
+    for i in user:
+        sum=0.0
+        for j in energy:
+            timestamp=j.timestamp
+            dayMonth=timestamp.split()
+            if str(i.user)==str(j.serviceno) and str(dayMonth[0])==str(datetime.datetime.now().strftime('%Y-%m-%d')):
+                sum=sum+float(j.consumption)
+        k.append(sum)
+
+
     context = {
-        'consumption': t,
+        'consumption': username,
+        'role': role,
+        'user':user,
+        'energy':k,
     }
     return render(request, 'EMS/monitor.html', context)
 
@@ -240,6 +286,8 @@ def forum(request):
         context.update({'form': form})
     return render(request, 'EMS/forum.html', context)
 
+
+
 def insert(request):
     if request.method == 'GET':
         serviceno = request.GET.get('sno', '')
@@ -264,3 +312,39 @@ def insert(request):
             'comp': 'true',
         }
         return render(request, 'EMS/insert.html', context)
+
+
+def message(request):
+    username = '8332895680'
+    passwd = 'yuvayuva'
+    serviceno = request.GET.get('number', '')
+    number = '9652425135'
+    message = "your limit exceeded"
+
+    # Logging into the SMS Site
+    url = 'http://site24.way2sms.com/Login1.action?'
+    data = 'username=' + username + '&password=' + passwd + '&Submit=Sign+in'
+
+    # For Cookies:
+    cj = cookielib.CookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+
+    # Adding Header detail:
+    opener.addheaders = [('User-Agent',
+                          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36')]
+
+    try:
+        usock = opener.open(url, data)
+    except IOError:
+        return
+
+    jession_id = str(cj).split('~')[1].split(' ')[0]
+    send_sms_url = 'http://site24.way2sms.com/smstoss.action?'
+    send_sms_data = 'ssaction=ss&Token=' + jession_id + '&mobile=' + number + '&message=' + message + '&msgLen=136'
+    opener.addheaders = [('Referer', 'http://site25.way2sms.com/sendSMS?Token=' + jession_id)]
+
+    try:
+        sms_sent_page = opener.open(send_sms_url, send_sms_data)
+    except IOError:
+        return
+    return render(request, 'EMS/message.html', {})
