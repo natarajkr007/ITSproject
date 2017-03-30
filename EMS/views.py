@@ -159,7 +159,7 @@ def user_profile(request):
     context_user = {
         'sum' : sum,
     }
-    if request.user.is_authenticated and role == 'customer':
+    if request.user.is_authenticated and role == 'C':
         return render(request, 'EMS/user_profile.html', context_user)
     elif request.user.is_authenticated and role == 'O':
         user = UserProfile.objects.all()
@@ -318,8 +318,10 @@ def message(request):
     username = '8332895680'
     passwd = 'yuvayuva'
     serviceno = request.GET.get('number', '')
-    number = '9652425135'
-    message = "your limit exceeded"
+    user_id = User.objects.get(username=serviceno).id
+    number=str(UserProfile.objects.get(user=user_id).phone_no)
+    # number = '7702300077'
+    message = "Please be consious on your power usage!!!! From EMS"
 
     # Logging into the SMS Site
     url = 'http://site24.way2sms.com/Login1.action?'
@@ -347,4 +349,4 @@ def message(request):
         sms_sent_page = opener.open(send_sms_url, send_sms_data)
     except IOError:
         return
-    return render(request, 'EMS/message.html', {})
+    return render(request, 'EMS/message.html', {'phone_no':number})
