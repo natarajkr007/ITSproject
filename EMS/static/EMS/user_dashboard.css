@@ -5,8 +5,18 @@ body {
   background-color: #b61924;
 }
 
+section {
+  height: 100vh;
+  width: 100%;
+}
+
 section#one {
   position: relative;
+}
+
+section#two {
+  background: #fff;
+  padding-top: 50px;
 }
 
 .header {
@@ -36,6 +46,68 @@ section#one {
 
 .header-text span {
   margin-left: 50px;
+}
+
+.scroll-down {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: 600px;
+  margin-left: -30px;
+  background: rgba(37, 30, 30, 0.5);
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: orange;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  animation: scroll 1s infinite;
+}
+
+.scroll-down span {
+  position: absolute;
+  border: 2px solid #fff;
+  left: 50%;
+  margin-left: -5px;
+  height: 10px;
+  width: 10px;
+  transform: rotate(45deg);
+  border-top: none;
+  border-left: none;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(15px);
+  }
+}
+
+.total-consumption {
+  height: 150px;
+  background: #2196F3;
+  padding-top: 35px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: #fff;
+}
+
+.total-consumption p::first-letter {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.total-consumption p span {
+  padding: 10px;
+  margin-left: 200px;
+  background: #14568C;
+  border-radius: 5px;
+  box-shadow: 10px 10px 15px black;
 }
 
 .particles-js-canvas-el {

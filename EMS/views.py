@@ -260,7 +260,27 @@ def dashboard(request):
 
 @login_required
 def user_dashboard(request):
-    return render(request, 'EMS/user_dashboard.html')
+
+    today_day = str(datetime.datetime.now().date()).split("-")[2]  # gets today's date to make a query
+    today_month = str(datetime.datetime.now().date()).split("-")[1]
+    today_year = str(datetime.datetime.now().date()).split("-")[0]
+
+    username = request.user.username
+    energy = Energy.objects.filter(serviceno = username, year = today_year, month = today_month, day = today_day)
+
+    # to calculate today's total energy till time
+    sum = 0
+    consumedValues = []
+    for energy in energy:
+        consumedValues.append(float(energy.consumption))
+        sum += float(energy.consumption)
+
+    context = {
+        'sum' : sum,
+        'values' : consumedValues
+    }
+
+    return render(request, 'EMS/user_dashboard.html', context)
 
 @login_required
 def official_dashboard(request):

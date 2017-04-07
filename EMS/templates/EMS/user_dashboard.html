@@ -19,11 +19,16 @@
     <div class="header-text">
       We have analysed your power consumption</br><span>Your stats are made ready for you</span>
     </div>
+    <div class="scroll-down">
+      <span></span>
+    </div>
   </div>
 </section>
 
 <section id="two">
-
+  <div class="total-consumption col-md-12 col-sm-12">
+    <p>Your total power consumption today <span>{{sum}}</span></p>
+  </div>
 </section>
 
 {% endblock %}
@@ -31,6 +36,7 @@
 {% block jsfile %}
 
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="{% static "js/particleData.js" %}"></script>
 <script src="{% static "js/userDashboard.js" %}"></script>
 
 {% endblock %}
