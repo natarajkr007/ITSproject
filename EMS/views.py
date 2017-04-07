@@ -226,6 +226,7 @@ def monitor (request):
     }
     return render(request, 'EMS/monitor.html', context)
 
+@login_required
 def show(request):
 
     today_day = str(datetime.datetime.now().date()).split("-")[2]  # gets today's date to make a query
@@ -247,6 +248,23 @@ def show(request):
             'consumption': consumption,
         }
         return render(request, 'EMS/show.html', context)
+
+@login_required
+def dashboard(request):
+    username = request.user.id
+    role = UserProfile.objects.get(user = username).role
+    if role == 'C':
+        return redirect('EMS:user_dashboard')
+    else:
+        return redirect('EMS:official_dashboard')
+
+@login_required
+def user_dashboard(request):
+    return render(request, 'EMS/user_dashboard.html')
+
+@login_required
+def official_dashboard(request):
+    return render(request, 'EMS/official_dashboard.html')
 
 @login_required
 def forum(request):

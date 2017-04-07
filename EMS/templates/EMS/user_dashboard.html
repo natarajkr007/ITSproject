@@ -1,0 +1,36 @@
+{% extends 'EMS/base1.html' %}
+
+{% load staticfiles %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'EMS/user_dashboard.css' %}">
+{% endblock %}
+
+{% block dashboard_active %}active{% endblock %}
+
+{% block body %}
+
+<section id="one">
+  <div class="container">
+    <div  id="particles-js">
+    </div>
+    <div class="header text-center">
+      DASHBOARD
+    </div>
+    <div class="header-text">
+      We have analysed your power consumption</br><span>Your stats are made ready for you</span>
+    </div>
+  </div>
+</section>
+
+<section id="two">
+
+</section>
+
+{% endblock %}
+
+{% block jsfile %}
+
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="{% static "js/userDashboard.js" %}"></script>
+
+{% endblock %}
