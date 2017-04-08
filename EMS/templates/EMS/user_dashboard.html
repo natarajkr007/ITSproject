@@ -27,7 +27,16 @@
 
 <section id="two">
   <div class="total-consumption col-md-12 col-sm-12">
-    <p>Your total power consumption today <span>{{sum}}</span></p>
+    <p>Your total power consumption today <span>{{sum}}</span> KWHs</p>
+  </div>
+  <div class="peak-hour col-md-12 col-sm-12">
+    <p>Your peak power consumption hour is <span>{{peakHour}}</span> </p>
+  </div>
+  <div class="peak-power col-md-12 col-sm-12">
+    <p><span>{{peakPower}} KWHs</span> Your peak power consumption in an hour</p>
+  </div>
+  <div class="min-power-hour col-md-12 col-sm-12">
+    <p><span>{{minPower}} KWHs</span> Your lowest power consumption at <span>{{minHour}}</span></p>
   </div>
 </section>
 

@@ -275,9 +275,19 @@ def user_dashboard(request):
         consumedValues.append(float(energy.consumption))
         sum += float(energy.consumption)
 
+    # to calculate peak power consumed hour
+    peakPower = max(consumedValues)
+    peakHour = consumedValues.index(peakPower)
+    minPower = min(consumedValues)
+    minHour = consumedValues.index(minPower)
+
     context = {
         'sum' : sum,
-        'values' : consumedValues
+        'values' : consumedValues,
+        'peakPower' : peakPower,
+        'peakHour' : peakHour,
+        'minPower' : minPower,
+        'minHour' : minHour
     }
 
     return render(request, 'EMS/user_dashboard.html', context)

@@ -16,7 +16,7 @@ section#one {
 
 section#two {
   background: #fff;
-  padding-top: 50px;
+  padding-top: 75px;
 }
 
 .header {
@@ -62,7 +62,8 @@ section#two {
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
-  animation: scroll 1s infinite;
+  -webkit-animation: scroll 1s infinite;
+          animation: scroll 1s infinite;
 }
 
 .scroll-down span {
@@ -72,24 +73,38 @@ section#two {
   margin-left: -5px;
   height: 10px;
   width: 10px;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
   border-top: none;
   border-left: none;
 }
 
-@keyframes scroll {
+@-webkit-keyframes scroll {
   0% {
-    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
   }
   100% {
-    transform: translateY(15px);
+    -webkit-transform: translateY(15px);
+            transform: translateY(15px);
   }
 }
 
-.total-consumption {
-  height: 150px;
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(15px);
+            transform: translateY(15px);
+  }
+}
+
+.total-consumption, .peak-hour, .peak-power, .min-power-hour {
   background: #2196F3;
-  padding-top: 35px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   padding-left: 50px;
   padding-right: 50px;
   font-family: 'Roboto', sans-serif;
@@ -97,17 +112,45 @@ section#two {
   color: #fff;
 }
 
-.total-consumption p::first-letter {
+.peak-hour {
+  background: #80FFF2;
+  color: #00332E;
+}
+
+.peak-power {
+  background: #80FF84;
+  color: #163317;
+}
+
+.min-power-hour {
+  background: #FFDF80;
+  color: #261A15;
+}
+
+.total-consumption p::first-letter, .peak-hour p::first-letter {
   font-size: 60px;
   font-weight: bold;
 }
 
-.total-consumption p span {
+.total-consumption p span, .peak-hour p span, .peak-power p span, .min-power-hour p span {
   padding: 10px;
-  margin-left: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
   background: #14568C;
   border-radius: 5px;
   box-shadow: 10px 10px 15px black;
+}
+
+.peak-hour p span {
+  background: #00A695;
+}
+
+.peak-power p span {
+  background: #47A64A;
+}
+
+.min-power-hour p span {
+  background: #A66300;
 }
 
 .particles-js-canvas-el {
