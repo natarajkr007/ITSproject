@@ -1,0 +1,37 @@
+{% extends 'EMS/base1.html' %}
+{% load staticfiles %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'EMS/search.css' %}">
+{% endblock %}
+
+{% block search_active %}active{% endblock %}
+
+{% block body %}
+<div class="offset-md-4 col-md-4 search-form">
+  <h3 class="text-center">Search</h3>
+  <form class="form" role="form" action="{% url "EMS:search_show" %}" method="POST" accept-charset="UTF-8" id="login-nav">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="sr-only" for="date">Date : </label>
+      <input name="date" type="text" class="form-control" id="date" placeholder="Date" autofocus>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="date">Month : </label>
+      <input name="month" type="text" class="form-control" id="month" placeholder="Month">
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="date">Year : </label>
+      <input name="year" type="text" class="form-control" id="year" placeholder="Year" required>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary offset-lg-3 col-lg-6">Get it</button>
+    </div>
+
+  </form>
+</div>
+{% if request.method == POST %}
+{{date}}
+{% endif %}
+{% endblock %}
+
+{% block footer %}{% endblock %}

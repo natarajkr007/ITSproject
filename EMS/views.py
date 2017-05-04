@@ -250,6 +250,91 @@ def show(request):
         return render(request, 'EMS/show.html', context)
 
 @login_required
+def search(request):
+    return render(request, 'EMS/search.html')
+
+@login_required
+def search_show(request):
+    username = request.user.username
+    if request.method == 'POST':
+        date = request.POST['date']
+        month = request.POST['month']
+        year = request.POST['year']
+
+        if date == "" and month == "":
+            Y_energy = Energy.objects.filter(serviceno = username, year = year)
+            months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+            monthConsumption = {'01':0, '02':0, '03':0, '04':0, '05':0, '06':0, '07':0, '08':0, '09':0, '10':0, '11':0, '12':0 }
+            for i in Y_energy:
+                monthConsumption[i.month] = monthConsumption[i.month] + float(i.consumption)
+            consumption = [0,0,0,0,0,0,0,0,0,0,0,0]
+            for i in range(0,len(consumption)):
+                key = ""
+                if i < 9:
+                    key = '0' + str(i+1)
+                else:
+                    key = str(i+1)
+                consumption[i] = monthConsumption[key]
+            # for key in keys:
+            #     consumption.append(monthConsumption[key])
+            query = "Year " + year
+            context = {
+                'xAxis' : months,
+                'consumption' : consumption,
+                'monthConsumption' : monthConsumption,
+                'query' : query
+            }
+            return render(request, 'EMS/search_show.html', context)
+
+        elif date == "":
+            M_energy = Energy.objects.filter(serviceno = username, year = year, month = month)
+            days = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
+            dailyConsumption = {}
+            for day in days:
+                dailyConsumption[day] = 0
+            for i in M_energy:
+                dailyConsumption[i.day] = dailyConsumption[i.day] + float(i.consumption)
+            consumption = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            for i in range(0,len(consumption)):
+                key = ""
+                if i < 9:
+                    key = '0' + str(i+1)
+                else:
+                    key = str(i+1)
+                consumption[i] = dailyConsumption[key]
+            query = "Month " + month + " in year " + year
+            context = {
+                'xAxis' : days,
+                'consumption' : consumption,
+                'query' : query
+            }
+            return render(request, 'EMS/search_show.html', context)
+
+        else:
+            D_energy = Energy.objects.filter(serviceno = username, year = year, month = month, day = date)
+            hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
+            hourlyConsumption = {}
+            for hour in hours:
+                hourlyConsumption[hour] = 0
+            for i in D_energy:
+                hourlyConsumption[i.hour] = hourlyConsumption[i.hour] + float(i.consumption)
+            consumption = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            for i in range(0,len(consumption)):
+                key = ""
+                if i < 10:
+                    key = '0' + str(i)
+                else:
+                    key = str(i)
+                consumption[i] = hourlyConsumption[key]
+            query = date + " " + month + " " + year
+            context = {
+                'xAxis' : hours,
+                'consumption' : consumption,
+                'query' : query
+            }
+            return render(request, 'EMS/search_show.html', context)
+
+@login_required
 def dashboard(request):
     username = request.user.id
     role = UserProfile.objects.get(user = username).role

@@ -35,6 +35,9 @@
         <li class="nav-item {% block dashboard_active %}{% endblock %}">
           <a class="nav-link" href="{% url "EMS:dashboard" %}">Dashboard</a>
         </li>
+        <li class="nav-item {% block search_active %}{% endblock %}">
+          <a class="nav-link" href="{% url "EMS:search" %}">Search</a>
+        </li>
       </ul>
       <ul class="navbar-nav nav-pills float-right">
         {% if user.is_authenticated %}
